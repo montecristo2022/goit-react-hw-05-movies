@@ -10,7 +10,7 @@ import { OneFilmPage } from './Pages/OneFilmPage';
 export const App = () => {
   return (
     <>
-      <Routes>
+      {/* <Routes>
            <Route path="/"  element={ <SharedLayout />}>
            <Route index element={<Home />} />
             <Route path='home' element={<Home/>}/>
@@ -19,7 +19,8 @@ export const App = () => {
             
 
         </Route>
-      </Routes>
+      </Routes> */}
+      <div>dsdgdfgdgdfg</div>
     </>
   );
 };
