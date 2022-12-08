@@ -1,10 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
-import { SharedLayout } from './SharedLayout';
-import { Movies} from './Pages/Movies';
-import { Home } from './Pages/Home';
-import { OneFilmPage } from './Pages/OneFilmPage';
+// import { Route, Routes } from 'react-router-dom';
+// // import { useState } from 'react';
+// // import { useEffect } from 'react';
+// import { SharedLayout } from './SharedLayout';
+// import { Movies} from './Pages/Movies';
+// import { Home } from './Pages/Home';
+// import { OneFilmPage } from './Pages/OneFilmPage';
 
 
 export const App = () => {
@@ -20,7 +20,7 @@ export const App = () => {
 
         </Route>
       </Routes> */}
-      <div>dsdgdfgdgdfg</div>
+      <div>ghgffhhfghfgdggfdsd</div>
     </>
   );
 };

@@ -1,12 +1,12 @@
-import { useParams } from "react-router-dom"
+// import { useParams } from "react-router-dom"
 
-export const OneFilmPage = () => {
-   const {id} = useParams()
-   console.log(id)
+// export const OneFilmPage = () => {
+//    const {id} = useParams()
+//    console.log(id)
 
-  return (
-    <>
-      <div>Страница для одного фильма</div>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <div>Страница для одного фильма</div>
+//     </>
+//   );
+// };
