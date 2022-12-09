@@ -18,18 +18,20 @@ export const Home = () => {
       });
   }, []);
 
+
+
   return (
     <main>
       {filmArray.length > 0
         ? filmArray.map(film => {
             return (
               <div key={film.id}>
-                <p>{film.id}</p>
-                <p>{film.overview}</p>
-                <img
+                   <img
                   src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
                   alt=""
                 />
+                <p>{film.vote_average}</p>
+             
               </div>
             );
           })
