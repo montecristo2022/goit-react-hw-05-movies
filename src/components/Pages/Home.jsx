@@ -1,10 +1,8 @@
-import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export const Home = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
-  // `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
@@ -37,7 +35,6 @@ export const Home = () => {
           })
         : null}
 
-      <Outlet />
     </main>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const Movies = () => {
   const standartPicture =
@@ -21,13 +21,9 @@ export const Movies = () => {
     setMyBoolean(true);
   }
 
-  function consoleLog() {
-    console.log(filmArray);
-  }
-
-  function imgClick(id) {
-    // console.log(id);
-  }
+  // function imgClick(id) {
+  //   // console.log(id);
+  // }
 
   useEffect(() => {
     if (submitData !== '') {
@@ -44,7 +40,6 @@ export const Movies = () => {
           return response.json();
         })
         .then(data => {
-          console.log(data);
           setFilmArray(data.results);
         });
     }
@@ -62,16 +57,13 @@ export const Movies = () => {
       <button type="submit" onClick={recieveInputData}>
         Поиск фильма
       </button>
-      <button type="button" onClick={consoleLog}>
-        Показать консоль
-      </button>
       {submitData !== ''
         ? filmArray.map(film => {
             return (
-              <NavLink to="id"  key={film.id}>
+              <Link to={`${film.id}`} key={film.id}>
                 <div>
                   <img
-                    onClick={() => imgClick(film.id)}
+                    // onClick={() => imgClick(film.id)}
                     src={
                       film.poster_path
                         ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
@@ -82,14 +74,13 @@ export const Movies = () => {
                   <p>{film.vote_average}</p>
                   <p>{film.original_title}</p>
                 </div>
-              </NavLink>
+              </Link>
             );
           })
         : null}
       {filmArray.length < 1 && MyBoolean === true ? (
         <h2>
-          Фильм с именем {submitData} не существует. Возможно, вы допустили
-          опечатку?
+          Film with name {submitData} is not exist. 
         </h2>
       ) : null}
     </main>
