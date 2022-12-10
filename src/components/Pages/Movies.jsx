@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Movies = () => {
+ const Movies = () => {
   const standartPicture =
     'https://png.vector.me/files/images/1/1/110358/inverted_question_mark_alternate_clip_art.jpg';
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
@@ -79,10 +79,12 @@ export const Movies = () => {
           })
         : null}
       {filmArray.length < 1 && MyBoolean === true ? (
-        <h2>
-          Film with name {submitData} is not exist. 
-        </h2>
+        <h2>Film with name {submitData} is not exist.</h2>
       ) : null}
     </main>
   );
 };
+
+
+
+export default Movies

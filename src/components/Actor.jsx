@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Actor = () => {
+ const Actor = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
@@ -22,10 +22,9 @@ export const Actor = () => {
         setFilmArray(data.crew);
       })
       .catch(error => {
-        console.log(error);
+        console.log(`error: ${error}`);
       });
   }, [id]);
-
 
   return (
     <section>
@@ -43,3 +42,6 @@ export const Actor = () => {
     </section>
   );
 };
+
+
+export default Actor

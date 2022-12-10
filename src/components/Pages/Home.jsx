@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const Home = () => {
+ const Home = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
 
@@ -40,3 +40,6 @@ export const Home = () => {
     </main>
   );
 };
+
+
+export default Home

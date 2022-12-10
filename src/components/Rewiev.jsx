@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Rewiev = () => {
+ const Rewiev = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
@@ -21,7 +21,8 @@ export const Rewiev = () => {
         setFilmArray(data.results);
       })
       .catch(error => {
-        console.log(error);
+
+        console.log(`error: ${error}`);
       });
   }, [id]);
 
@@ -31,7 +32,10 @@ export const Rewiev = () => {
         ? filmArray.map(oneActor => {
             return <p key={oneActor.id}>{oneActor.content}</p>;
           })
-        : 'К сожалению сюжет у нас нет ревью к этому фильму'}
+        : 'unfortunately we dont have a review'}
     </section>
   );
 };
+
+
+export default Rewiev
