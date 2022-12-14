@@ -19,6 +19,7 @@ const Movies = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = searchParams.get('search');
+  console.log(searchValue)
 
   const standartPicture =
     'https://img.freepik.com/premium-vector/big-problem-businesswomen-sits-on-the-question-mark-sign_70921-125.jpg';
