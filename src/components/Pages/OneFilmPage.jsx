@@ -1,10 +1,19 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
+import {
+  MainContent,
+  Overview,
+  GenresWrapper,
+  GenresText,
+  Genres
+} from 'components/StyledComponent/OneFilmPage.styled';
 
-  const OneFilmPage = () => {
+const OneFilmPage = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     fetch(
@@ -25,27 +34,27 @@ import { useEffect, useState } from 'react';
       });
   }, [id]);
 
-  function log() {
-    console.log(filmArray);
-    console.log(filmArray.genres.length);
-  }
+  const backLinkHref = location?.state?.from ?? '/';
 
   return (
-    <main>
-      <button onClick={log}>Консоль</button>
+    <MainContent>
+      <Link to={backLinkHref}>GoBack</Link>
       <div>
         <img
           src={`https://image.tmdb.org/t/p/w500${filmArray.poster_path}`}
           alt="poster of the film"
         />
         <h2>{filmArray.original_title}</h2>
-        <p>Overview: {filmArray.overview}</p>
+        <Overview> Overview: {filmArray.overview}</Overview>
 
-        {filmArray.genres !== undefined
-          ? filmArray.genres.map(oneGenre => {
-              return <p key={oneGenre.id}>{oneGenre.name}</p>;
-            })
-          : 'false'}
+        <GenresWrapper>
+          <GenresText>Genres:</GenresText>
+          {filmArray.genres !== undefined
+            ? filmArray.genres.map(oneGenre => {
+                return <Genres key={oneGenre.id}>{oneGenre.name}</Genres>;
+              })
+            : 'false'}
+        </GenresWrapper>
 
         <p>Average rating: {filmArray.vote_average}</p>
       </div>
@@ -57,10 +66,11 @@ import { useEffect, useState } from 'react';
           <Link to="rewiev">Rewievs</Link>
         </li>
       </ul>
-      <Outlet />
-    </main>
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+    </MainContent>
   );
 };
 
-
-export default OneFilmPage
+export default OneFilmPage;

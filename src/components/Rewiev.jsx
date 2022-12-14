@@ -28,6 +28,7 @@ import { useParams } from 'react-router-dom';
 
   return (
     <section>
+      <h2>Film review</h2>
       {filmArray.length > 0
         ? filmArray.map(oneActor => {
             return <p key={oneActor.id}>{oneActor.content}</p>;

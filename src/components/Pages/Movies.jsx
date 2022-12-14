@@ -1,10 +1,27 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import {
+  MainContent,
+  Input,
+  Button,
+  SearchWrapper,
+  UserMistakeWrapper,
+  UserMistakeText,
+  Image,
+  FilmInfoWrapper,
+  FilmTextWrapper,
+} from 'components/StyledComponent/Movies.styled';
 
- const Movies = () => {
+const Movies = () => {
+  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchValue = searchParams.get('search');
+
   const standartPicture =
-    'https://png.vector.me/files/images/1/1/110358/inverted_question_mark_alternate_clip_art.jpg';
+    'https://img.freepik.com/premium-vector/big-problem-businesswomen-sits-on-the-question-mark-sign_70921-125.jpg';
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const [MyBoolean, setMyBoolean] = useState(false);
@@ -21,14 +38,11 @@ import { Link } from 'react-router-dom';
     setMyBoolean(true);
   }
 
-  // function imgClick(id) {
-  //   // console.log(id);
-  // }
-
   useEffect(() => {
     if (submitData !== '') {
       console.log(submitData);
 
+      setSearchParams({ search: submitData });
       fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${submitData}&page=1&include_adult=false`
       )
@@ -43,27 +57,28 @@ import { Link } from 'react-router-dom';
           setFilmArray(data.results);
         });
     }
-  }, [submitData]);
+  }, [setSearchParams, submitData]);
 
   return (
-    <main>
-      <input
-        type="text"
-        id="message"
-        name="message"
-        onChange={handleChange}
-        value={querry}
-      />
-      <button type="submit" onClick={recieveInputData}>
-        Поиск фильма
-      </button>
+    <MainContent>
+      <SearchWrapper>
+        <Input
+          type="text"
+          id="message"
+          name="message"
+          onChange={handleChange}
+          value={querry}
+        />
+        <Button type="submit" onClick={recieveInputData}>
+          Find film
+        </Button>
+      </SearchWrapper>
       {submitData !== ''
         ? filmArray.map(film => {
             return (
-              <Link to={`${film.id}`} key={film.id}>
-                <div>
-                  <img
-                    // onClick={() => imgClick(film.id)}
+              <Link to={`${film.id}`} key={film.id} state={{ from: location }}>
+                <FilmInfoWrapper>
+                  <Image
                     src={
                       film.poster_path
                         ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
@@ -71,20 +86,24 @@ import { Link } from 'react-router-dom';
                     }
                     alt=""
                   />
-                  <p>{film.vote_average}</p>
-                  <p>{film.original_title}</p>
-                </div>
+                  <FilmTextWrapper>
+                    <p>Average rating: {film.vote_average}</p>
+                    <p>Name of movie: {film.original_title}</p>
+                  </FilmTextWrapper>
+                </FilmInfoWrapper>
               </Link>
             );
           })
         : null}
       {filmArray.length < 1 && MyBoolean === true ? (
-        <h2>Film with name {submitData} is not exist.</h2>
+        <UserMistakeWrapper>
+          <UserMistakeText>
+            Film with name {submitData} is not exist.
+          </UserMistakeText>
+        </UserMistakeWrapper>
       ) : null}
-    </main>
+    </MainContent>
   );
 };
 
-
-
-export default Movies
+export default Movies;
