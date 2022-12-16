@@ -6,7 +6,12 @@ import {
   Overview,
   GenresWrapper,
   GenresText,
-  Genres
+  Genres,
+  FilmImg,
+  FilTitle,
+  AverageRating,
+  LiWrapper,
+  StyledLink
 } from 'components/StyledComponent/OneFilmPage.styled';
 
 const OneFilmPage = () => {
@@ -38,13 +43,13 @@ const OneFilmPage = () => {
 
   return (
     <MainContent>
-      <Link to={backLinkHref}>GoBack</Link>
+      <StyledLink to={backLinkHref}>GoBack</StyledLink>
       <div>
-        <img
+        <FilmImg
           src={`https://image.tmdb.org/t/p/w500${filmArray.poster_path}`}
           alt="poster of the film"
         />
-        <h2>{filmArray.original_title}</h2>
+        <FilTitle>{filmArray.original_title}</FilTitle>
         <Overview> Overview: {filmArray.overview}</Overview>
 
         <GenresWrapper>
@@ -56,16 +61,16 @@ const OneFilmPage = () => {
             : 'false'}
         </GenresWrapper>
 
-        <p>Average rating: {filmArray.vote_average}</p>
+        <AverageRating>Average rating: {filmArray.vote_average}</AverageRating>
       </div>
-      <ul>
+      <LiWrapper>
         <li>
           <Link to="actor">Actors</Link>
         </li>
         <li>
           <Link to="rewiev">Rewievs</Link>
         </li>
-      </ul>
+      </LiWrapper>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

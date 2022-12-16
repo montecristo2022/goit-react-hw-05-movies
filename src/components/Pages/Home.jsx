@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Main, FilmTitle, FilmRating } from 'components/StyledComponent/Home.styled';
 
 const Home = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
@@ -22,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+    <Main>
       {filmArray.length > 0
         ? filmArray.map(film => {
             return (
@@ -35,13 +36,13 @@ const Home = () => {
             }
             alt=""
                 />
-              <h2>{film.original_title}</h2>
-                <p>Average rating: {film.vote_average}</p>
+              <FilmTitle>{film.original_title}</FilmTitle>
+                <FilmRating>Average rating: {film.vote_average}</FilmRating>
               </Link>
             );
           })
         : null}
-    </main>
+    </Main>
   );
 };
 

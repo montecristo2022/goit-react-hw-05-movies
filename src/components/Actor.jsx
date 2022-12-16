@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { FilmActorsWrapper } from './StyledComponent/Actor.styled';
 
  const Actor = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
-  //   console.log(id);
 
   useEffect(() => {
     fetch(
@@ -27,7 +27,7 @@ import { useParams } from 'react-router-dom';
   }, [id]);
 
   return (
-    <section>
+    <FilmActorsWrapper>
       <h2>Worked on the film</h2>
 
       {filmArray.length > 0
@@ -38,8 +38,8 @@ import { useParams } from 'react-router-dom';
               </p>
             );
           })
-        : 'unfortunately we dont know the cast'}
-    </section>
+        : <p>unfortunately we dont know the cast</p>}
+    </FilmActorsWrapper>
   );
 };
 

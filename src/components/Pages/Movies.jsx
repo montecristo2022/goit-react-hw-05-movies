@@ -10,8 +10,8 @@ import {
   UserMistakeWrapper,
   UserMistakeText,
   Image,
-  FilmInfoWrapper,
-  FilmTextWrapper,
+  FilmRating,
+  FilmTitle
 } from 'components/StyledComponent/Movies.styled';
 
 const Movies = () => {
@@ -19,7 +19,7 @@ const Movies = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = searchParams.get('search');
-  console.log(searchValue)
+  console.log(searchValue);
 
   const standartPicture =
     'https://img.freepik.com/premium-vector/big-problem-businesswomen-sits-on-the-question-mark-sign_70921-125.jpg';
@@ -78,7 +78,7 @@ const Movies = () => {
         ? filmArray.map(film => {
             return (
               <Link to={`${film.id}`} key={film.id} state={{ from: location }}>
-                <FilmInfoWrapper>
+               
                   <Image
                     src={
                       film.poster_path
@@ -87,11 +87,9 @@ const Movies = () => {
                     }
                     alt=""
                   />
-                  <FilmTextWrapper>
-                    <p>Average rating: {film.vote_average}</p>
-                    <p>Name of movie: {film.original_title}</p>
-                  </FilmTextWrapper>
-                </FilmInfoWrapper>
+                  <FilmTitle>Name of movie: {film.original_title}</FilmTitle>
+                  <FilmRating>Average rating: {film.vote_average}</FilmRating>
+             
               </Link>
             );
           })

@@ -15,7 +15,7 @@ code {
 }
 
 
-li, ul, p, a {
+li, ul, p, a, h1, h2, h3 {
 list-style: none;
 text-decoration: none;
 margin: 0;

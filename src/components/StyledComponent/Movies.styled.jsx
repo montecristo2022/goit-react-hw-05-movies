@@ -1,18 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
-export const MainContent = styled.main``;
-
-
-
-export const FilmInfoWrapper = styled.div`
-text-align: center;
-margin-bottom: 30px;
+export const MainContent = styled.main`
+  text-align: center;
+  margin-bottom: 30px;
 `;
-
-export const FilmTextWrapper = styled.div`
-margin-top: 10px;
-`;
-
 
 
 export const SearchWrapper = styled.div`
@@ -20,8 +11,6 @@ export const SearchWrapper = styled.div`
   justify-content: center;
   margin-bottom: 20px;
 `;
-
-
 
 export const Input = styled.input`
   padding-top: 6px;
@@ -33,12 +22,20 @@ export const Button = styled.button`
 `;
 
 export const Image = styled.img`
-width: 550px;
-height: 770px;
-`
+  width: 550px;
+  height: 750px;
+`;
 
+export const FilmTitle = styled.h2`
+  margin-top: 10px;
+  color: black;
+`;
 
-
+export const FilmRating = styled.p`
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: black;
+`;
 
 const fade = keyframes`
 from {
@@ -51,14 +48,11 @@ from {
 `;
 
 export const UserMistakeText = styled.h2`
-animation: ${fade} 3s linear infinite alternate;
-animation-iteration-count: 1;
-`
+  animation: ${fade} 3s linear infinite alternate;
+  animation-iteration-count: 1;
+`;
 
 export const UserMistakeWrapper = styled.div`
   display: flex;
   justify-content: center;
- 
 `;
-
-
