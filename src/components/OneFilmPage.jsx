@@ -11,7 +11,7 @@ import {
   FilTitle,
   AverageRating,
   LiWrapper,
-  StyledLink
+  StyledLink,
 } from 'components/StyledComponent/OneFilmPage.styled';
 
 const OneFilmPage = () => {
@@ -65,10 +65,14 @@ const OneFilmPage = () => {
       </div>
       <LiWrapper>
         <li>
-          <Link to="actor">Actors</Link>
+          <Link to="actor" state={{ from: backLinkHref }}>
+            Actors
+          </Link>
         </li>
         <li>
-          <Link to="rewiev">Rewievs</Link>
+          <Link to="rewiev" state={{ from: backLinkHref }}>
+            Rewievs
+          </Link>
         </li>
       </LiWrapper>
       <Suspense fallback={null}>

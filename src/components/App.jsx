@@ -13,7 +13,7 @@ const Home = lazy(() => import('./Pages/Home'));
 const Movies = lazy(() => import('./Pages/Movies'));
 const Actor = lazy(() => import('./Actor'));
 const Rewiev = lazy(() => import('./Rewiev'));
-const OneFilmPage = lazy(() => import('./Pages/OneFilmPage'));
+const OneFilmPage = lazy(() => import('./OneFilmPage'));
 
 export const App = () => {
   return (
