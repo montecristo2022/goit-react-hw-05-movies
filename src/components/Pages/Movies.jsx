@@ -25,24 +25,25 @@ const Movies = () => {
   const [filmArray, setFilmArray] = useState([]);
   const [MyBoolean, setMyBoolean] = useState(false);
   const [querry, setQuerry] = useState('');
-  const [submitData, setSubmitData] = useState('');
 
   function handleChange(event) {
     setQuerry(event.target.value);
   }
 
-  function recieveInputData(event) {
+  function handleSubmit(e) {
     setQuerry('');
-    event.preventDefault();
-    setSubmitData(querry);
+    const form = e.currentTarget;
+    console.log(form.elements.message.value);
+
+    e.preventDefault();
+    setSearchParams({ search: form.elements.message.value });
     setMyBoolean(true);
   }
 
   useEffect(() => {
-    if (submitData !== '') {
-      setSearchParams({ search: submitData });
+    if (searchValue) {
       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${submitData}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
       )
         .then(response => {
           if (!response.ok) {
@@ -55,12 +56,11 @@ const Movies = () => {
           setFilmArray(data.results);
         });
     }
-  }, [setSearchParams, submitData]);
-
+  }, [searchValue]);
 
   return (
     <MainContent>
-      <SearchWrapper>
+      <SearchWrapper onSubmit={handleSubmit}>
         <Input
           type="text"
           id="message"
@@ -68,11 +68,9 @@ const Movies = () => {
           onChange={handleChange}
           value={querry}
         />
-        <Button type="submit" onClick={recieveInputData}>
-          Find film
-        </Button>
+        <Button type="submit">Find film</Button>
       </SearchWrapper>
-      {submitData !== ''
+      {searchValue !== ''
         ? filmArray.map(film => {
             return (
               <Link to={`${film.id}`} key={film.id} state={{ from: location }}>
@@ -93,7 +91,7 @@ const Movies = () => {
       {filmArray.length < 1 && MyBoolean === true ? (
         <UserMistakeWrapper>
           <UserMistakeText>
-            Film with name {submitData} is not exist.
+            Film with name {searchValue} is not exist.
           </UserMistakeText>
         </UserMistakeWrapper>
       ) : null}

@@ -13,6 +13,7 @@ import {
   LiWrapper,
   StyledLink,
 } from 'components/StyledComponent/OneFilmPage.styled';
+import { render } from '@testing-library/react';
 
 const OneFilmPage = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';

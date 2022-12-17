@@ -6,7 +6,7 @@ export const MainContent = styled.main`
 `;
 
 
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
