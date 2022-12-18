@@ -27,7 +27,7 @@ const Home = () => {
       {filmArray.length > 0
         ? filmArray.map(film => {
             return (
-              <Link to={`${film.id}`} key={film.id}>
+              <Link to={`movies/${film.id}`} key={film.id}>
                 <img
             src={
               film.poster_path
