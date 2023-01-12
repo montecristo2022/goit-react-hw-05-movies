@@ -2,7 +2,6 @@ import styled, { keyframes } from 'styled-components';
 
 export const MainContent = styled.main`
   text-align: center;
-  margin-bottom: 30px;
 `;
 
 
@@ -24,6 +23,7 @@ export const Button = styled.button`
 export const Image = styled.img`
   width: 550px;
   height: 750px;
+  
 `;
 
 export const FilmTitle = styled.h2`

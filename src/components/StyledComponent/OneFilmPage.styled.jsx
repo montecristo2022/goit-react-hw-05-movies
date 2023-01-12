@@ -16,6 +16,11 @@ padding: 5px 10px 5px 10px;
 border-radius: 4px;
 `
 
+export const StyledFilmLink = styled(Link)`
+font-size: 20px;
+`
+
+
 export const FilmImg = styled.img`
 margin-bottom: 20px;
 `
@@ -29,6 +34,7 @@ width: 500px;
 margin-left: auto; 
 margin-right: auto;
 margin-bottom: 20px;
+font-size: 20px;
 `;
 
 export const GenresWrapper = styled.div `
@@ -38,14 +44,17 @@ justify-content: center;
 
 export const GenresText = styled.p`
 margin-right: 10px;
+font-size: 20px;
 `
 
 export const Genres = styled.p`
 margin-right: 5px;
+font-size: 20px;
 `
 
 export const AverageRating = styled.p`
 margin-bottom: 10px;
+font-size: 20px;
 `
 
 export const LiWrapper = styled.ul`

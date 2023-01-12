@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FilmActorsWrapper } from './StyledComponent/Actor.styled';
+import { FilmActorsWrapper, OneActor, Text } from './StyledComponent/Actor.styled';
 
  const Actor = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
@@ -33,12 +33,13 @@ import { FilmActorsWrapper } from './StyledComponent/Actor.styled';
       {filmArray.length > 0
         ? filmArray.map(oneActor => {
             return (
-              <p key={oneActor.credit_id}>
-                Name: {oneActor.name} Job in our team: {oneActor.job}
-              </p>
+
+               <OneActor key={oneActor.credit_id}>
+                Name: {oneActor.name}, {oneActor.job}
+              </OneActor>
             );
           })
-        : <p>unfortunately we dont know the cast</p>}
+        : <Text>unfortunately, we dont know the cast</Text>}
     </FilmActorsWrapper>
   );
 };

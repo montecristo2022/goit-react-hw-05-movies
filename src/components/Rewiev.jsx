@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FilmRewievWrapper } from './StyledComponent/Rewiev.styled';
+import { FilmRewievWrapper, OneRewiev, Text } from './StyledComponent/Rewiev.styled';
 
  const Rewiev = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
@@ -32,9 +32,9 @@ import { FilmRewievWrapper } from './StyledComponent/Rewiev.styled';
       <h2>Film review</h2>
       {filmArray.length > 0
         ? filmArray.map(oneActor => {
-            return <p key={oneActor.id}>{oneActor.content}</p>;
+            return <OneRewiev key={oneActor.id}>{oneActor.content}</OneRewiev>;
           })
-        : <p>unfortunately we dont have a review</p>}
+        : <Text>unfortunately, we dont have a review</Text>}
     </FilmRewievWrapper>
   );
 };

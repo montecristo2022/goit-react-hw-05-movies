@@ -7,10 +7,10 @@ font-size: 20px;
 padding-right: 20px;
 padding-left: 20px;
   border-radius: 4px;
-  color: black;
+  color: white;
   font-weight: 500;
   &.active {
-    color: white;
+
     background-color: grey;
   }
 `

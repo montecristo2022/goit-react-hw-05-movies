@@ -12,6 +12,7 @@ import {
   AverageRating,
   LiWrapper,
   StyledLink,
+  StyledFilmLink
 } from 'components/StyledComponent/OneFilmPage.styled';
 
 
@@ -20,6 +21,9 @@ const OneFilmPage = () => {
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
   const location = useLocation();
+  const standartPicture =
+    'https://img.freepik.com/premium-vector/big-problem-businesswomen-sits-on-the-question-mark-sign_70921-125.jpg';
+
 
   useEffect(() => {
     fetch(
@@ -47,7 +51,8 @@ const OneFilmPage = () => {
       <StyledLink to={backLinkHref}>GoBack</StyledLink>
       <div>
         <FilmImg
-          src={`https://image.tmdb.org/t/p/w500${filmArray.poster_path}`}
+
+        src={ filmArray.poster_path ? `https://image.tmdb.org/t/p/w500${filmArray.poster_path}` : standartPicture}
           alt="poster of the film"
         />
         <FilTitle>{filmArray.original_title}</FilTitle>
@@ -62,18 +67,18 @@ const OneFilmPage = () => {
             : 'false'}
         </GenresWrapper>
 
-        <AverageRating>Average rating: {filmArray.vote_average}</AverageRating>
+        <AverageRating>Average rating: {filmArray.vote_average?.toFixed(2)}</AverageRating>
       </div>
       <LiWrapper>
         <li>
-          <Link to="actor" state={{ from: backLinkHref }}>
+          <StyledFilmLink to="actor" state={{ from: backLinkHref }}>
             Actors
-          </Link>
+          </StyledFilmLink>
         </li>
         <li>
-          <Link to="rewiev" state={{ from: backLinkHref }}>
+          <StyledFilmLink to="rewiev" state={{ from: backLinkHref }}>
             Rewievs
-          </Link>
+          </StyledFilmLink>
         </li>
       </LiWrapper>
       <Suspense fallback={null}>
