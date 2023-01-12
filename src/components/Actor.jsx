@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FilmActorsWrapper, OneActor, Text } from './StyledComponent/Actor.styled';
+import {
+  FilmActorsWrapper,
+  OneActor,
+  Text,
+} from './StyledComponent/Actor.styled';
 
- const Actor = () => {
+const Actor = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
@@ -30,19 +34,19 @@ import { FilmActorsWrapper, OneActor, Text } from './StyledComponent/Actor.style
     <FilmActorsWrapper>
       <h2>Worked on the film</h2>
 
-      {filmArray.length > 0
-        ? filmArray.map(oneActor => {
-            return (
-
-               <OneActor key={oneActor.credit_id}>
-                Name: {oneActor.name}, {oneActor.job}
-              </OneActor>
-            );
-          })
-        : <Text>unfortunately, we dont know the cast</Text>}
+      {filmArray.length > 0 ? (
+        filmArray.map(oneActor => {
+          return (
+            <OneActor key={oneActor.credit_id}>
+              Name: {oneActor.name}, {oneActor.job}
+            </OneActor>
+          );
+        })
+      ) : (
+        <Text>unfortunately, we dont know the cast</Text>
+      )}
     </FilmActorsWrapper>
   );
 };
 
-
-export default Actor
+export default Actor;

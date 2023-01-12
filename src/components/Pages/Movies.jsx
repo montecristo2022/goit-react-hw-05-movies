@@ -11,7 +11,7 @@ import {
   FilmRating,
   FilmTitle,
 } from 'components/StyledComponent/Movies.styled';
-import {  Button, TextField, Box, Typography } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 import { Footer } from 'components/Footer';
 
@@ -60,53 +60,56 @@ const Movies = () => {
   }, [searchValue]);
 
   return (
-<>
-<MainContent>
-      <SearchWrapper onSubmit={handleSubmit}>
-<TextField
-  hiddenLabel
-  id="filled-hidden-label-small"
-  variant="filled"
-  size="small"
-  name='message'
-  onChange={handleChange}
-  value={querry}
-/>
-        <Button type="submit" variant="contained">Find film</Button>
-      </SearchWrapper>
-      {searchValue !== ''
-        ? filmArray.map(film => {
-            return (
-              <Link to={`${film.id}`} key={film.id} state={{ from: location }}>
-                <Image
-                  src={
-                    film.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
-                      : standartPicture
-                  }
-                  alt=""
-                />
-                <FilmTitle>Name of movie: {film.original_title}</FilmTitle>
-                <FilmRating>Average rating: {film.vote_average}</FilmRating>
-              </Link>
-            );
-          })
-        : null}
+    <>
+      <MainContent>
+        <SearchWrapper onSubmit={handleSubmit}>
+          <TextField
+            hiddenLabel
+            id="filled-hidden-label-small"
+            variant="filled"
+            size="small"
+            name="message"
+            onChange={handleChange}
+            value={querry}
+          />
+          <Button type="submit" variant="contained">
+            Find film
+          </Button>
+        </SearchWrapper>
+        {searchValue !== ''
+          ? filmArray.map(film => {
+              return (
+                <Link
+                  to={`${film.id}`}
+                  key={film.id}
+                  state={{ from: location }}
+                >
+                  <Image
+                    src={
+                      film.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
+                        : standartPicture
+                    }
+                    alt=""
+                  />
+                  <FilmTitle>Name of movie: {film.original_title}</FilmTitle>
+                  <FilmRating>Average rating: {film.vote_average}</FilmRating>
+                </Link>
+              );
+            })
+          : null}
 
-{filmArray.length > 0 ? <Footer/> : null}
+        {filmArray.length > 0 ? <Footer /> : null}
 
-      {filmArray.length < 1 && MyBoolean === true ? (
-        <UserMistakeWrapper>
-          <UserMistakeText>
-            Film with name {searchValue} is not exist.
-          </UserMistakeText>
-        </UserMistakeWrapper>
-      ) : null}
-    </MainContent>
-
-
-</>
-
+        {filmArray.length < 1 && MyBoolean === true ? (
+          <UserMistakeWrapper>
+            <UserMistakeText>
+              Film with name {searchValue} is not exist.
+            </UserMistakeText>
+          </UserMistakeWrapper>
+        ) : null}
+      </MainContent>
+    </>
   );
 };
 

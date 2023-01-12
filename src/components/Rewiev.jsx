@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FilmRewievWrapper, OneRewiev, Text } from './StyledComponent/Rewiev.styled';
+import {
+  FilmRewievWrapper,
+  OneRewiev,
+  Text,
+} from './StyledComponent/Rewiev.styled';
 
- const Rewiev = () => {
+const Rewiev = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
   const [filmArray, setFilmArray] = useState([]);
   const { id } = useParams();
@@ -22,7 +26,6 @@ import { FilmRewievWrapper, OneRewiev, Text } from './StyledComponent/Rewiev.sty
         setFilmArray(data.results);
       })
       .catch(error => {
-
         console.log(`error: ${error}`);
       });
   }, [id]);
@@ -30,14 +33,15 @@ import { FilmRewievWrapper, OneRewiev, Text } from './StyledComponent/Rewiev.sty
   return (
     <FilmRewievWrapper>
       <h2>Film review</h2>
-      {filmArray.length > 0
-        ? filmArray.map(oneActor => {
-            return <OneRewiev key={oneActor.id}>{oneActor.content}</OneRewiev>;
-          })
-        : <Text>unfortunately, we dont have a review</Text>}
+      {filmArray.length > 0 ? (
+        filmArray.map(oneActor => {
+          return <OneRewiev key={oneActor.id}>{oneActor.content}</OneRewiev>;
+        })
+      ) : (
+        <Text>unfortunately, we dont have a review</Text>
+      )}
     </FilmRewievWrapper>
   );
 };
 
-
-export default Rewiev
+export default Rewiev;

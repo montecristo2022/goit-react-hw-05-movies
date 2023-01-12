@@ -1,4 +1,4 @@
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Suspense } from 'react';
 import {
@@ -12,9 +12,8 @@ import {
   AverageRating,
   LiWrapper,
   StyledLink,
-  StyledFilmLink
+  StyledFilmLink,
 } from 'components/StyledComponent/OneFilmPage.styled';
-
 
 const OneFilmPage = () => {
   const API_KEY = 'dfb50cc3b16f950a5a6b0ea437e17f05';
@@ -23,7 +22,6 @@ const OneFilmPage = () => {
   const location = useLocation();
   const standartPicture =
     'https://img.freepik.com/premium-vector/big-problem-businesswomen-sits-on-the-question-mark-sign_70921-125.jpg';
-
 
   useEffect(() => {
     fetch(
@@ -51,8 +49,11 @@ const OneFilmPage = () => {
       <StyledLink to={backLinkHref}>GoBack</StyledLink>
       <div>
         <FilmImg
-
-        src={ filmArray.poster_path ? `https://image.tmdb.org/t/p/w500${filmArray.poster_path}` : standartPicture}
+          src={
+            filmArray.poster_path
+              ? `https://image.tmdb.org/t/p/w500${filmArray.poster_path}`
+              : standartPicture
+          }
           alt="poster of the film"
         />
         <FilTitle>{filmArray.original_title}</FilTitle>
@@ -67,7 +68,9 @@ const OneFilmPage = () => {
             : 'false'}
         </GenresWrapper>
 
-        <AverageRating>Average rating: {filmArray.vote_average?.toFixed(2)}</AverageRating>
+        <AverageRating>
+          Average rating: {filmArray.vote_average?.toFixed(2)}
+        </AverageRating>
       </div>
       <LiWrapper>
         <li>

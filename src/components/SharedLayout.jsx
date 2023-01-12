@@ -1,13 +1,11 @@
-import { AppBar, Toolbar, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { StyledNavLink, Header, FooterWrapper } from './StyledComponent/SharedLayout.styled';
+import { StyledNavLink } from './StyledComponent/SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (
     <div>
-
-
       <AppBar position="static" sx={{ mb: 5 }}>
         <Toolbar
           sx={{
@@ -24,13 +22,6 @@ export const SharedLayout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-
-
-
-
-        
-      </div>
-  
+    </div>
   );
 };
-
