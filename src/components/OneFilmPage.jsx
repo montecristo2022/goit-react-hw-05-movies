@@ -75,7 +75,7 @@ const OneFilmPage = () => {
       <LiWrapper>
         <li>
           <StyledFilmLink to="actor" state={{ from: backLinkHref }}>
-            Actors
+            Movie Team
           </StyledFilmLink>
         </li>
         <li>
